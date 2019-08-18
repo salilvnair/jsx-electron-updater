@@ -1,0 +1,27 @@
+{
+  "name": "jsxeu-example",
+  "homepage": "https://salilvnair.github.io/jsxeu",
+  "version": "2.0.1",
+  "license": "MIT",
+  "private": true,
+  "main": "main.js",
+  "dependencies": {
+    "@ngxeu/util": "^4.1.1",
+    "follow-redirects": "^1.7.0",
+    "fs-extra": "^8.1.0",
+    "jsonfile": "^5.0.0",
+    "jsxeu": "file:..",
+    "prop-types": "^15.6.2",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-scripts": "^1.1.4",
+    "unzipper": "^0.10.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "electron": "./node_modules/.bin/electron ."
+  }
+}
