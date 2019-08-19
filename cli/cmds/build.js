@@ -65,9 +65,8 @@ async function processReactBuild(args, appName) {
     if(!isElectronProject){
         process.exit();
     }
-    let reactBuildCmd = buildUtil.prepareReactBuildCmd(args, appName);
-    console.log(reactBuildCmd);
-    if(reactBuildCmd && !args["skip-react"]){
+     if(!args["skip-react-build"]){
+        let reactBuildCmd = buildUtil.prepareReactBuildCmd(args, appName);
         buildUtil.modifyPackageJson(args, appName, reactBuildCmd);
         buildUtil.reactBuild(args,appName);
         buildUtil.moveReactBuildPackage(args, appName, true);

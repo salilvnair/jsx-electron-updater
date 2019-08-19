@@ -67,7 +67,7 @@ const menus = {
         ${chalk.green('[optional] ')}${chalk.cyan(' --bump, -b')}
          used to bump the version of the app .(${chalk.green('defaulted to '+chalk.red('npm version patch'))})   \n\t valid options are  ${chalk.blue('(major|minor|patch)')}
 
-        ${chalk.green('[optional] ')}${chalk.cyan(' --skip-react')}
+        ${chalk.green('[optional] ')}${chalk.cyan(' --skip-react-build')}
          skip react build if already done once,\n\t usually used when a new logo is placed in the build directory.
 
         ${chalk.green('[optional] ')}${chalk.cyan(' --pack, -p')}

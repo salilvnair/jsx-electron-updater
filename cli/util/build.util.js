@@ -99,7 +99,8 @@ module.exports =  {
         }
         upgradePackageVersion(args,appName);
         let packageJson = jsonfile.readFileSync('./package.json');
-        modifyAppNamePlaceHolderIfAny(args,appName,packageJson,buildCmd);      
+        modifyAppNamePlaceHolderIfAny(args,appName,packageJson,buildCmd);  
+        injectJsxeuBuildScript(packageJson, buildCmd, "./" )    
     },
 
     prepareReactBuildCmd: (args) => {
@@ -194,11 +195,11 @@ function injectJsxeuBuildScript(packageJson, buildCmd,packagePath) {
         packageJson = jsonfile.readFileSync(packJsonFile);
     }
     if(packageJson.scripts){
-        packageJson.scripts["react-electron-build"] = buildCmd;
+        packageJson.scripts["jsxeu-build"] = buildCmd;
     }
     else{
         let scripts = {};
-        scripts["react-electron-build"] = buildCmd;
+        scripts["jsxeu-build"] = buildCmd;
         packageJson.scripts = scripts;
     }
     //console.log(packageJson);
@@ -408,21 +409,15 @@ function reactBuild(args,appName,pkgJsonFilePath,cont) {
     }
     console.log(pkgJsonFilePath);
     shellJs.cd(pkgJsonFilePath);
-    let runReactBuild;
-    if(cont) {
-        runReactBuild = "npm run react-electron-build"; 
-    }
-    else {
-        runReactBuild = "npm run build";
-    }
-    if (shellJs.exec(runReactBuild).code !== 0) {
+    let runJsxeuBuild = "npm run jsxeu-build";
+    if (shellJs.exec(runJsxeuBuild).code !== 0) {
         console.log(chalk.underline.red.bold('\nPackaging Failed... '));
         process.exit();
     }    
     shellJs.cd(tempPath);
 }
 
-function  processMoveAndInstallElectronPackage(args, appName, electronBuildCmd){
+function processMoveAndInstallElectronPackage(args, appName, electronBuildCmd){
     let newElectronRootPath = processElectronAsSeperateApp(args, appName, electronBuildCmd);
     installElectronApp(newElectronRootPath);
     return newElectronRootPath;
@@ -474,9 +469,8 @@ function moveReactBuildPackage(args, appName, isElectronBuild) {
     console.log(chalk.green(reactBuildConfigPath));
     let tempPath = shellJs.pwd();
     console.log(chalk.green(tempPath));
-    let cmd = "mkdir -p " + reactBuildConfigPath+" && mv build " + reactBuildConfigPath;
-    console.log(cmd);
-    shellJs.exec(cmd);
+    shellJs.mkdir('-p', reactBuildConfigPath);
+    shellJs.mv('build', reactBuildConfigPath);
 }
 
 function archive(srcFolder,zipRelativePath) {

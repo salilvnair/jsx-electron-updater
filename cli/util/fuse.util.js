@@ -44,8 +44,8 @@ async function processCreatingReactElectronFusion(args,appName) {
    
     let appRootDir = shellJs.pwd()+"";
     copyDefaultMainTemplateIntoRootDir(args,appRootDir);
-    setInfoInPackageJson(args,appRootDir);
     if(args['skip-el']){
+        setInfoInPackageJson(args,appRootDir);
         console.log(chalk.red(figlet.textSync('Fused',{font:'Fire Font-k'})));
         process.exit();
     }
@@ -53,6 +53,7 @@ async function processCreatingReactElectronFusion(args,appName) {
     shellJs.exec(installElectronCmd);
     let installElectronBuilderCmd = "npm install electron-builder --save-dev";
     shellJs.exec(installElectronBuilderCmd);
+    setInfoInPackageJson(args,appRootDir);
     console.log(chalk.red(figlet.textSync('Fused',{font:'Fire Font-k'})));
     process.exit();
 }

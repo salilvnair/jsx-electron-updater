@@ -1,6 +1,6 @@
 {
   "name": "@jsxeu/cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": " A command-line tool for react jsx-electron-updater package",
   "main": "jsxeu.js",
   "author": "Salil V Nair",
@@ -9,10 +9,9 @@
     "jsxeu": "bin/jsxeu"
   },
   "jsxeu_scripts": {
-    "electron-build": "build",
-    "electron-build-debug": "env DEBUG=electron-builder build",
-    "react-build":"npm run build",
-    "react-electron-build": "./node_modules/.bin/electron-builder"
+    "electron-build": "./node_modules/.bin/electron-builder",
+    "electron-build-debug": "env DEBUG=electron-builder ./node_modules/.bin/electron-builder",
+    "react-build": "npm run build"
   },
   "preferGlobal": true,
   "engines": {
