@@ -3,7 +3,6 @@ export class ElectronAppUtil {
   electron() {
     if (!this._electron) {
       this._electron = window.require('electron');
-      console.log(this._electron)
       return this._electron;
 
   }

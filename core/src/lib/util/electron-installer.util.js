@@ -31,9 +31,18 @@ export class ElectronInstallerUtil {
       return this._decrypt(key,value);
   }
 
+  gt(v1, v2) {
+    return this._gt(v1, v2);
+  }
+
   ngxeuUtil() {
       let ngxeuUtil = this._electronAppUtil.remote().require('@ngxeu/util');
       return ngxeuUtil;
+  }
+
+  _gt(v1, v2) {
+    let ngxeuUtil = this._electronAppUtil.remote().require('@ngxeu/util');
+    return ngxeuUtil.gt(v1, v2);
   }
 
   _ecrypt(key, value) {
