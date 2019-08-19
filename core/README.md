@@ -1,13 +1,13 @@
-# jsxeu
+# React Higher Order Component
 
-> React electron updater
+> React electron updater HOC to update electron fused react desktop apps.
 
-[![NPM](https://img.shields.io/npm/v/jsxeu.svg)](https://www.npmjs.com/package/jsxeu) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/@jsxeu/core.svg)](https://www.npmjs.com/package/@jsxeu/core) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
 
 ```bash
-npm install --save jsxeu
+npm install --save @jsxeu/core
 ```
 
 ## Usage
@@ -15,15 +15,47 @@ npm install --save jsxeu
 ```jsx
 import React, { Component } from 'react'
 
-import MyComponent from 'jsxeu'
+import reactElectronUpdater from '@jsxeu/core'
 
-class Example extends Component {
+class MyApp extends Component {
+
+  checkForUpdate = () => {
+    this.props.checkForUpdate().subscribe(response=>{
+      console.log(response);
+    })
+  }
+
+  download = () => {
+    this.props.download().subscribe(response=>{
+      console.log(response);
+    })
+  }
+
+  install = () => {
+    this.props.install().subscribe(response=>{
+      console.log(response);
+    })
+  }
+
+  hasPendingUpdates = () => {
+    console.log(this.props.hasPendingUpdates());
+  }
+
   render () {
     return (
-      <MyComponent />
+      .....
+
     )
   }
 }
+const releaseInfo = {
+  user: 'salilvnair',
+  repo: 'myrepo',
+  appName: 'myapp'
+};
+
+export default reactElectronUpdater(releaseInfo)(MyApp);
+
 ```
 
 ## License
