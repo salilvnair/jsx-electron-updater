@@ -1,10 +1,10 @@
 {
   "name": "@jsxeu/core",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React electron updater",
   "author": "salilvnair",
   "license": "MIT",
-  "repository": "https://salilvnair.github.io/jsxeu.git",
+  "repository": "https://github.com/salilvnair/jsx-electron-updater",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
