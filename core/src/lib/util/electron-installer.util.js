@@ -92,7 +92,7 @@ export class ElectronInstallerUtil {
           downloadNotifier.value = error;
           downloadNotifierSubject.next(downloadNotifier);
       });
-      return downloadNotifierSubject;
+      return downloadNotifierSubject.asObservable();
   }
 
   _extract(options){
