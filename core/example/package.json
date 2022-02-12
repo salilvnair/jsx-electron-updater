@@ -7,7 +7,7 @@
   "main": "main.js",
   "dependencies": {
     "@ngxeu/util": "^4.1.1",
-    "follow-redirects": "^1.7.0",
+    "follow-redirects": "^1.14.8",
     "fs-extra": "^8.1.0",
     "jsonfile": "^5.0.0",
     "jsxeu": "file:..",
