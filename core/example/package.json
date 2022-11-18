@@ -14,7 +14,7 @@
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "react-scripts": "^1.1.4",
+    "react-scripts": "^5.0.1",
     "unzipper": "^0.10.3"
   },
   "scripts": {
